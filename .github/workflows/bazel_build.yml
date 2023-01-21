@@ -23,7 +23,6 @@ jobs:
           cd tests
           bazelisk build --config=gcc11 //...
 
-
   build_and_test_macos12:
     name: macOS 12 build <Apple Clang>
     runs-on: macos-12
