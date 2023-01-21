@@ -5,10 +5,11 @@
 
 """External dependencies for odin."""
 
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
-def odin_deps():
+def oidn_deps():
     """Fetches dependencies of odin."""
 
     maybe(
@@ -24,7 +25,7 @@ def odin_deps():
     maybe(
         http_archive,
         name = "mkl_dnn_v1",
-        build_file = "@de_vertexwahn_oidn_rules//:mkldnn_v1.BUILD",
+        build_file = "@de_vertexwahn_rules_oidn//:mkldnn_v1.BUILD",
         sha256 = "dc2b9bc851cd8d5a6c4622f7dc215bdb6b32349962875f8bf55cceed45a4c449",
         strip_prefix = "oneDNN-2.7.1",
         urls = [
@@ -50,5 +51,14 @@ def odin_deps():
         urls = [
             "https://github.com/OpenImageDenoise/oidn/archive/refs/tags/v1.4.3.tar.gz",
         ],
-        #sha256 = "b8c22d275d9128741265537c559d0ea73074adbf2f2b66b0a766ca52c52d665b",
+        sha256 = "37941f260af212183579efb6b1e07e4075e3ab9cbd63120afd007e62367efef6",
+    )
+
+    maybe(
+        git_repository,
+        name = "rules_ispc",
+        commit = "ec5063fde457732a3b06e40ad7a3c1a7b6c5d34e",
+        #branch = "main",
+        remote = "https://github.com/Vertexwahn/rules_ispc",
+        #shallow_since = "1669327440 +0100",
     )
