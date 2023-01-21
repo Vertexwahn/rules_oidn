@@ -48,6 +48,7 @@ def oidn_deps():
         name = "oidn",
         build_file = "@de_vertexwahn_rules_oidn//:BUILD.oidn",
         strip_prefix = "oidn-1.4.3",
+        patches = ["@de_vertexwahn_rules_oidn//:0001-Bazel-support.patch"],
         urls = [
             "https://github.com/OpenImageDenoise/oidn/archive/refs/tags/v1.4.3.tar.gz",
         ],
