@@ -61,5 +61,5 @@ def oidn_deps():
         commit = "ec5063fde457732a3b06e40ad7a3c1a7b6c5d34e",
         #branch = "main",
         remote = "https://github.com/Vertexwahn/rules_ispc",
-        #shallow_since = "1669327440 +0100",
+        shallow_since = "1671698253 +0100",
     )
