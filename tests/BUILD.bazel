@@ -7,6 +7,7 @@ cc_binary(
     name = "example",
     srcs = ["example.cpp"],
     deps = [
+        "@de_vertexwahn//imaging",
         "@oidn//:OpenImageDenoise",
     ],
 )
