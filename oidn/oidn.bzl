@@ -63,3 +63,11 @@ def oidn_deps():
         remote = "https://github.com/Vertexwahn/rules_ispc",
         shallow_since = "1671698253 +0100",
     )
+
+    maybe(
+        git_repository,
+        name = "oidn-weights",
+        build_file = "@de_vertexwahn_rules_oidn//:BUILD.oidn-weights",
+        commit = "a34b7641349c5a79e46a617d61709c35df5d6c28",
+        remote = "https://github.com/OpenImageDenoise/oidn-weights",
+    )
