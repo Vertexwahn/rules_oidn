@@ -13,11 +13,14 @@
 #include "src/lib/OpenEXR/ImfRgbaFile.h"
 #include "src/lib/OpenEXR/ImfStringAttribute.h"
 
-#include <cfloat>
-#include <cassert>
-
 using namespace Imf;
 using namespace Imath;
+
+#include <cassert>
+#include <cfloat>
+#include <iostream>
+
+using namespace std;
 
 class Image3f {
 public:
@@ -144,9 +147,6 @@ Image3f load_image_openexr(std::string_view filename) {
     }
     return img;
 }
-
-#include <iostream>
-using namespace std;
 
 int main() {
     cout << "Simple denoising example" << endl;

@@ -162,7 +162,10 @@ cc_library(
         "include/OpenImageDenoise/oidn.h",
         "include/OpenImageDenoise/oidn.hpp",
     ],
-    defines = ["OIDN_DNNL"],
+    defines = [
+        "OIDN_DNNL",
+        "OIDN_STATIC_LIB",
+    ],
     includes = [
         "core",
         "include",
