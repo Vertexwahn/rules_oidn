@@ -6,7 +6,7 @@ Rules for using [Intel Open Image Denoise](https://www.openimagedenoise.org/) in
 
 ## Current status
 
-Currently, this rules compile only on Ubun tu 22.04. 
+Currently, this rules compile only on Ubuntu 22.04. 
 Windows and macOS builds fail with errors.
 If you run the example (see next section) the following output is generated:
 
