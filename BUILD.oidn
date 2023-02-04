@@ -116,6 +116,11 @@ cc_library(
     ],
 )
 
+py_binary(
+    name = "blob_to_cpp",
+    srcs = ["scripts/blob_to_cpp.py"],
+)
+
 cc_library(
     name = "OpenImageDenoise",
     srcs = [

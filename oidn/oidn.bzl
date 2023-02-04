@@ -71,3 +71,20 @@ def oidn_deps():
         commit = "a34b7641349c5a79e46a617d61709c35df5d6c28",
         remote = "https://github.com/OpenImageDenoise/oidn-weights",
     )
+
+def generate_cpp_from_blob_cc_library(name, out, **kwargs):
+    generted_header_filename = out
+
+    native.genrule(
+        name = "%s_weights_gen" % name,
+        srcs = [ name ],
+        outs = [name + ".cpp", name + ".h",],
+        cmd = "python3 $(location @de_vertexwahn_rules_oidn//:blob_to_cpp) $(locations %s) -o $(location %s.cpp) -H $(location %s.h)" % (name, name, name),
+        tools = "@de_vertexwahn_rules_oidn//:blob_to_cpp"
+    )
+    native.cc_library(
+        name = name,
+        srcs = [name + ".o"],
+        hdrs = [name + ".h"],
+        **kwargs
+    )
