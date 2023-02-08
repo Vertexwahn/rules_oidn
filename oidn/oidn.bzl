@@ -16,10 +16,10 @@ def oidn_deps():
         http_archive,
         name = "bazel_skylib",
         urls = [
-            "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.3.0/bazel-skylib-1.3.0.tar.gz",
-            "https://github.com/bazelbuild/bazel-skylib/releases/download/1.3.0/bazel-skylib-1.3.0.tar.gz",
+            "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.4.0/bazel-skylib-1.4.0.tar.gz",
+            "https://github.com/bazelbuild/bazel-skylib/releases/download/1.4.0/bazel-skylib-1.4.0.tar.gz",
         ],
-        sha256 = "74d544d96f4a5bb630d465ca8bbcfe231e3594e5aae57e1edbf17a6eb3ca2506",
+        sha256 = "f24ab666394232f834f74d19e2ff142b0af17466ea0c69a3f4c276ee75f6efce",
     )
 
     maybe(
@@ -44,6 +44,16 @@ def oidn_deps():
     )
 
     maybe(
+        git_repository,
+        name = "oidn-weights",
+        build_file = "@de_vertexwahn_rules_oidn//:BUILD.oidn-weights",
+        commit = "ee791970ac469272bfde093b72794cb92578290d",
+        #remote = "https://github.com/OpenImageDenoise/oidn-weights",
+        remote = "https://github.com/Vertexwahn/oidn-weights-without-git-lfs",
+        shallow_since = "1675897178 +0100",
+    )
+
+    maybe(
         http_archive,
         name = "oidn",
         build_file = "@de_vertexwahn_rules_oidn//:BUILD.oidn",
@@ -62,29 +72,4 @@ def oidn_deps():
         #branch = "main",
         remote = "https://github.com/Vertexwahn/rules_ispc",
         shallow_since = "1671698253 +0100",
-    )
-
-    maybe(
-        git_repository,
-        name = "oidn-weights",
-        build_file = "@de_vertexwahn_rules_oidn//:BUILD.oidn-weights",
-        commit = "a34b7641349c5a79e46a617d61709c35df5d6c28",
-        remote = "https://github.com/OpenImageDenoise/oidn-weights",
-    )
-
-def generate_cpp_from_blob_cc_library(name, out, **kwargs):
-    generted_header_filename = out
-
-    native.genrule(
-        name = "%s_weights_gen" % name,
-        srcs = [ name ],
-        outs = [name + ".cpp", name + ".h",],
-        cmd = "python3 $(location @de_vertexwahn_rules_oidn//:blob_to_cpp) $(locations %s) -o $(location %s.cpp) -H $(location %s.h)" % (name, name, name),
-        tools = "@de_vertexwahn_rules_oidn//:blob_to_cpp"
-    )
-    native.cc_library(
-        name = name,
-        srcs = [name + ".o"],
-        hdrs = [name + ".h"],
-        **kwargs
     )
