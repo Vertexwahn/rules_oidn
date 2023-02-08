@@ -125,9 +125,18 @@ py_binary(
     data = ["@oidn-weights//:weights"]
 )
 
-generate_cpp_from_blob_cc_library(
-    name = "rt_alb.tza"
-)
+generate_cpp_from_blob_cc_library(name = "rt_alb.tza")
+generate_cpp_from_blob_cc_library(name = "rt_hdr.tza")
+generate_cpp_from_blob_cc_library(name = "rt_hdr_alb.tza")
+generate_cpp_from_blob_cc_library(name = "rt_hdr_alb_nrm.tza")
+generate_cpp_from_blob_cc_library(name = "rt_hdr_calb_cnrm.tza")
+generate_cpp_from_blob_cc_library(name = "rt_ldr.tza")
+generate_cpp_from_blob_cc_library(name = "rt_ldr_alb.tza")
+generate_cpp_from_blob_cc_library(name = "rt_ldr_alb_nrm.tza")
+generate_cpp_from_blob_cc_library(name = "rt_ldr_calb_cnrm.tza")
+generate_cpp_from_blob_cc_library(name = "rt_nrm.tza")
+generate_cpp_from_blob_cc_library(name = "rtlightmap_dir.tza")
+generate_cpp_from_blob_cc_library(name = "rtlightmap_hdr.tza")
 
 cc_library(
     name = "OpenImageDenoise",
@@ -178,6 +187,7 @@ cc_library(
     defines = [
         "OIDN_DNNL",
         "OIDN_STATIC_LIB",
+        "OIDN_FILTER_RT",
     ],
     includes = [
         "core",
@@ -204,6 +214,17 @@ cc_library(
         ":output_copy_ispc",
         ":output_reorder_ispc",
         ":upsample_ispc",
-        ":rt_alb.tza"
+        ":rt_alb.tza",
+        ":rt_hdr.tza",
+        ":rt_hdr_alb.tza",
+        ":rt_hdr_alb_nrm.tza",
+        ":rt_hdr_calb_cnrm.tza",
+        ":rt_ldr.tza",
+        ":rt_ldr_alb.tza",
+        ":rt_ldr_alb_nrm.tza",
+        ":rt_ldr_calb_cnrm.tza",
+        ":rt_nrm.tza",
+        ":rtlightmap_dir.tza",
+        ":rtlightmap_hdr.tza",
     ],
 )
