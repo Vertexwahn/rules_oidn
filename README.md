@@ -7,8 +7,8 @@ Rules for using [Intel Open Image Denoise](https://www.openimagedenoise.org/) in
 ## Current status
 
 Currently, these rules compile on Ubuntu 22.04 and Windows.
-macOS with M1 processor builds will fail (neon needs to be supported).
-If you run the example (see next section) the following output is generated:
+Building on macOS is currently not working.
+If you run the example (see "Quick start") the following output is generated:
 
 ![Denoised image](tests/data/denoised_onlyColor.png)
 
@@ -31,19 +31,27 @@ cd rules_oidn
 cd tests
 ```
 
-*Run Hello World demo with Ubuntu 22.04:*
+*Run example with Ubuntu 22.04:*
 
 ```shell
-bazel run --config=gcc11 //:example # See test/.bazelrc for other supported configs
+bazel run --config=gcc11 //:example
 ```
+
+*Run example with Visual Studio 2022:*
+
+```shell
+bazel run --config=vs2022 //:example
+```
+
+See [tests/.bazelrc](tests/.bazelrc) for other supported build configs.
 
 ## More about the example
 
-The example provides noisy rendering of the Cornell Box.
+The example provides a noisy rendering of the Cornell Box.
 
 ![Noisy](tests/data/noisy_10spp.png)
 
-Additionally there is a corrsponding albedo image:
+Additionally, there is a corresponding albedo image:
 
 ![Noisy](tests/data/albedo_10spp.png)
 
@@ -53,7 +61,18 @@ And a normal image:
 
 This serves as an input for the example.
 
-## Generating weight manually
+## Other projects related to this
+
+There is a command line tool that makes use of OIDN:
+https://declanrussell.com/portfolio/intel-open-image-denoiser-2/
+
+How to run it:
+
+```shell
+.\Denoiser.exe -i .\noisy_10spp.exr -o denoised.exr -a .\albedo_10spp.exr -n .\normal_10spp.exr
+```
+
+## Generating weights manually
 
 ```shell
 python3 .\scripts\blob_to_cpp.py .\weights\rt_alb.tza -o .\weights\rt_alb.tza.cpp -H .\weights\rt_alb.tza.h

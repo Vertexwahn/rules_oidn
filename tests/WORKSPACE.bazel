@@ -39,7 +39,6 @@ git_repository(
     name = "com_openexr",
     commit = "436fcd2829ae9a8965af1db15ac8531fdc8b96ce",
     remote = "https://github.com/AcademySoftwareFoundation/openexr/",
-    #shallow_since = "1625794324 -0700",
 )
 
 load("@com_openexr//:bazel/third_party/openexr_deps.bzl", "openexr_deps")

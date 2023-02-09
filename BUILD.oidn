@@ -5,7 +5,6 @@
 
 load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
 load("@rules_ispc//:ispc.bzl", "ispc_cc_library")
-
 load("@de_vertexwahn_rules_oidn//:oidn/oidn_generate_cpp_from_blob.bzl", "generate_cpp_from_blob_cc_library")
 load("@de_vertexwahn_rules_oidn//:oidn/oidn.bzl", "oidn_deps")
 
@@ -122,20 +121,31 @@ cc_library(
 py_binary(
     name = "blob_to_cpp",
     srcs = ["scripts/blob_to_cpp.py"],
-    data = ["@oidn-weights//:weights"]
+    data = ["@oidn-weights//:weights"],
 )
 
 generate_cpp_from_blob_cc_library(name = "rt_alb.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_hdr.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_hdr_alb.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_hdr_alb_nrm.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_hdr_calb_cnrm.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_ldr.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_ldr_alb.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_ldr_alb_nrm.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_ldr_calb_cnrm.tza")
+
 generate_cpp_from_blob_cc_library(name = "rt_nrm.tza")
+
 generate_cpp_from_blob_cc_library(name = "rtlightmap_dir.tza")
+
 generate_cpp_from_blob_cc_library(name = "rtlightmap_hdr.tza")
 
 cc_library(
@@ -188,6 +198,7 @@ cc_library(
         "OIDN_DNNL",
         "OIDN_STATIC_LIB",
         "OIDN_FILTER_RT",
+        "OIDN_FILTER_RTLIGHTMAP",
     ],
     includes = [
         "core",
@@ -213,7 +224,6 @@ cc_library(
         ":input_reorder_ispc",
         ":output_copy_ispc",
         ":output_reorder_ispc",
-        ":upsample_ispc",
         ":rt_alb.tza",
         ":rt_hdr.tza",
         ":rt_hdr_alb.tza",
@@ -226,5 +236,6 @@ cc_library(
         ":rt_nrm.tza",
         ":rtlightmap_dir.tza",
         ":rtlightmap_hdr.tza",
+        ":upsample_ispc",
     ],
 )
