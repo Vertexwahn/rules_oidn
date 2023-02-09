@@ -217,7 +217,7 @@ int main() {
         std::cout << "Error: " << errorMessage << std::endl;
     }
 
-    store_open_exr("/home/vertexwahn/Desktop/denoised_out2.exr", out);
+    store_open_exr("denoised.exr", out);
 
     return 0;
 }
