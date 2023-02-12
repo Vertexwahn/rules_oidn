@@ -184,12 +184,13 @@ void store_open_exr(const std::string_view &filename, const Image3f &image) {
 int main() {
     cout << "Simple denoising example" << endl;
 
-    Image3f noisy = load_image_openexr("data/noisy_10spp.exr");
+    Image3f color = load_image_openexr("data/cornel_box.naive_diffuse.box_filter.spp128.embree.exr");
+    //Image3f color = load_image_openexr("data/noisy_10spp.exr");
     Image3f normal = load_image_openexr("data/normal_10spp.exr");
     Image3f albedo = load_image_openexr("data/albedo_10spp.exr");
-    Image3f out{noisy.width(), noisy.height()};
+    Image3f out{color.width(), color.height()};
 
-    float* colorPtr = noisy.data();
+    float* colorPtr = color.data();
     float* albedoPtr = albedo.data();
     float* normalPtr = normal.data();
     float* outputPtr = out.data();
