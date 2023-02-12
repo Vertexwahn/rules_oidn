@@ -47,7 +47,7 @@ def oidn_deps():
         git_repository,
         name = "oidn-weights",
         build_file = "@de_vertexwahn_rules_oidn//:BUILD.oidn-weights",
-        commit = "ee791970ac469272bfde093b72794cb92578290d",
+        commit = "e9cae1b5e7814b8bc2540ff09e77e7ae874b08df",
         #remote = "https://github.com/OpenImageDenoise/oidn-weights",
         remote = "https://github.com/Vertexwahn/oidn-weights-without-git-lfs",
         shallow_since = "1675897178 +0100",
@@ -69,7 +69,6 @@ def oidn_deps():
         git_repository,
         name = "rules_ispc",
         commit = "ec5063fde457732a3b06e40ad7a3c1a7b6c5d34e",
-        #branch = "main",
         remote = "https://github.com/Vertexwahn/rules_ispc",
         shallow_since = "1671698253 +0100",
     )
