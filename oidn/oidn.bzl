@@ -50,7 +50,7 @@ def oidn_deps():
         commit = "e9cae1b5e7814b8bc2540ff09e77e7ae874b08df",
         #remote = "https://github.com/OpenImageDenoise/oidn-weights",
         remote = "https://github.com/Vertexwahn/oidn-weights-without-git-lfs",
-        shallow_since = "1675897178 +0100",
+        shallow_since = "1676196087 +0100",
     )
 
     maybe(
