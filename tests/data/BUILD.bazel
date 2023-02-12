@@ -11,6 +11,7 @@ filegroup(
     name = "data",
     srcs = [
         "albedo_10spp.exr",
+        "cornel_box.naive_diffuse.box_filter.spp128.embree.exr",
         "noisy_10spp.exr",
         "normal_10spp.exr",
     ],
