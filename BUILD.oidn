@@ -43,8 +43,8 @@ ispc_cc_library(
     srcs = [
         "core/color.ispc",
         "core/color.isph",
-        #"core/image.isph",
-        #"core/math.isph",
+        "core/image.isph",
+        "core/math.isph",
         "core/vec.isph",
     ],
     out = "color_ispc.h",
