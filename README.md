@@ -17,6 +17,7 @@ If you run the example (see "Quick start") the following output is generated:
 **Prerequisites:**
 
 The following tools should be installed:
+
 - [Git](https://git-scm.com/)
 - [Bazel](https://bazel.build/install)
 - A C++ compiler (GCC, Visual Studio, Clang, etc.)
