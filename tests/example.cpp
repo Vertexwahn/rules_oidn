@@ -190,6 +190,15 @@ int main() {
     Image3f albedo = load_image_openexr("data/albedo_10spp.exr");
     Image3f out{color.width(), color.height()};
 
+    // for debug resons the color image can be initialized with a const color
+    if(false) { 
+        for (int x = 0; x < color.width(); ++x) {
+            for (int y = 0; y < color.height(); ++y) {
+                color.set_pixel(x,y,.5f, .5f, .5f);
+            }
+        }
+    }
+
     float* colorPtr = color.data();
     float* albedoPtr = albedo.data();
     float* normalPtr = normal.data();
@@ -198,6 +207,7 @@ int main() {
     int height = out.height();
 
     oidn::DeviceRef device = oidn::newDevice();
+    device.set("verbose", 1);
     device.commit();
 
     // Create a filter for denoising a beauty (color) image using optional auxiliary images too
