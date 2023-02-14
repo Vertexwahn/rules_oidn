@@ -15,7 +15,7 @@ def generate_cpp_from_blob_cc_library(name, **kwargs):
         cmd = ("./$(location //:blob_to_cpp) $(location {src}) " +
                "-o $(location {cpp_out}) " +
                "-H $(location {header_out}) " +
-               "-n blobs::weights").format(
+               "-n oidn::blobs::weights").format(
             src = src,
             cpp_out = cpp_out,
             header_out = header_out,
