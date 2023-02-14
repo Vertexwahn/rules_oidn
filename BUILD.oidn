@@ -43,8 +43,8 @@ ispc_cc_library(
     srcs = [
         "core/color.ispc",
         "core/color.isph",
-        "core/image.isph",
-        "core/math.isph",
+        #"core/image.isph",
+        #"core/math.isph",
         "core/vec.isph",
     ],
     out = "color_ispc.h",
@@ -107,7 +107,7 @@ cc_library(
         "common/thread.cpp",
         "common/thread.h",
         "common/timer.h",
-        "include/OpenImageDenoise/config.h",  # generted
+        "include/OpenImageDenoise/config.h",  # generated
         "include/OpenImageDenoise/oidn.h",
         "include/OpenImageDenoise/oidn.hpp",
     ],
@@ -205,19 +205,6 @@ cc_library(
         "include",
     ],
     visibility = ["//visibility:public"],
-    #textual_hdrs = [
-    #"core/image.isph",
-    #"core/input_reorder.ispc",
-    #"core/color.isph",
-    #"core/color.ispc",
-    #"core/math.isph",
-    #"core/upsample.ispc",
-    #"core/output_copy.ispc",
-    #"core/output_reorder.ispc",
-    #"core/reorder.isph",
-    #"core/tensor.isph",
-    #"core/vec.isph",
-    #],
     deps = [
         ":color_ispc",
         ":common",
