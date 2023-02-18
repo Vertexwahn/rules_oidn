@@ -190,7 +190,7 @@ int main() {
     Image3f albedo = load_image_openexr("data/albedo_10spp.exr");
     Image3f out{color.width(), color.height()};
 
-    // for debug resons the color image can be initialized with a const color
+    // for debug reasons the color image can be initialized with a const color
     if(false) { 
         for (int x = 0; x < color.width(); ++x) {
             for (int y = 0; y < color.height(); ++y) {
