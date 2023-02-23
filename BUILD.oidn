@@ -18,7 +18,7 @@ expand_template(
         "@OIDN_VERSION_MINOR@": "4",
         "@OIDN_VERSION_PATCH@": "3",
         "@OIDN_VERSION_NUMBER@": "010403",
-        "@OIDN_VERSION_NOTE": "muh",
+        "@OIDN_VERSION_NOTE": "",
     },
     template = "include/OpenImageDenoise/config.h.in",
 )
