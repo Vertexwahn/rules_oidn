@@ -68,7 +68,7 @@ def oidn_deps():
     maybe(
         git_repository,
         name = "rules_ispc",
-        commit = "ec5063fde457732a3b06e40ad7a3c1a7b6c5d34e",
+        commit = "79d5e40030ff6aed749d9e59e3f06b738767b704",
         remote = "https://github.com/Vertexwahn/rules_ispc",
-        shallow_since = "1671698253 +0100",
+        shallow_since = "1677167397 +0100",
     )
