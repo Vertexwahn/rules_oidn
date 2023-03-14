@@ -91,7 +91,7 @@ expand_template(
     substitutions = {
         "@DNNL_VERSION_MAJOR@": "2",
         "@DNNL_VERSION_MINOR@": "7",
-        "@DNNL_VERSION_PATCH@": "1",
+        "@DNNL_VERSION_PATCH@": "3",
         "@DNNL_VERSION_HASH@": "N/A",
     },
     template = "include/oneapi/dnnl/dnnl_version.h.in",
@@ -156,7 +156,6 @@ cc_library(
             "src/cpu/**/*.cpp",
             "src/common/ittnotify/*.c",
             "src/cpu/jit_utils/**/*.cpp",
-            #"src/cpu/aarch64/**", # macOS M1
         ],
         exclude = [
             "src/cpu/aarch64/**",
