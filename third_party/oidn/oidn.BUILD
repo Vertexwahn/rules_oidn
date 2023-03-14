@@ -113,10 +113,11 @@ cc_library(
     ],
     includes = ["include/OpenImageDenoise"],
     deps = [
-        #"@mkl_dnn_v1//:mkl_dnn",
-        "@mkl_dnn_acl_compatible//:mkl_dnn_acl",
         "@oneTBB//:tbb",
-    ],
+    ] + select({
+        "@platforms//os:osx": ["@mkl_dnn_acl_compatible//:mkl_dnn_acl"],
+        "//conditions:default": ["@mkl_dnn_v1//:mkl_dnn"],
+    }),
 )
 
 py_binary(

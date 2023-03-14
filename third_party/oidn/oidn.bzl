@@ -25,7 +25,7 @@ def oidn_deps():
     maybe(
         http_archive,
         name = "mkl_dnn_v1",
-        build_file = "@rules_oidn//:mkldnn_v1.BUILD",
+        build_file = "@rules_oidn//third_party/onednn:mkldnn_v1.BUILD",
         sha256 = "dc2b9bc851cd8d5a6c4622f7dc215bdb6b32349962875f8bf55cceed45a4c449",
         strip_prefix = "oneDNN-2.7.1",
         urls = [
@@ -75,7 +75,7 @@ def oidn_deps():
     maybe(
         git_repository,
         name = "oidn-weights",
-        build_file = "@rules_oidn//third_party/oidn-weights:BUILD.oidn-weights",
+        build_file = "@rules_oidn//third_party/oidn-weights:oidn-weights.BUILD",
         commit = "e9cae1b5e7814b8bc2540ff09e77e7ae874b08df",
         #remote = "https://github.com/OpenImageDenoise/oidn-weights",
         remote = "https://github.com/Vertexwahn/oidn-weights-without-git-lfs",
@@ -85,7 +85,7 @@ def oidn_deps():
     maybe(
         http_archive,
         name = "oidn",
-        build_file = "@rules_oidn//third_party/oidn:BUILD.oidn",
+        build_file = "@rules_oidn//third_party/oidn:oidn.BUILD",
         strip_prefix = "oidn-1.4.3",
         patches = ["@rules_oidn//third_party/oidn:0001-Bazel-support.patch"],
         urls = [
