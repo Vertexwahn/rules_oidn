@@ -46,6 +46,12 @@ bazel run --config=vs2022 //:example
 
 See [tests/.bazelrc](tests/.bazelrc) for other supported build configs.
 
+You can also provide a filename as an argument, e.g. on Ubuntu 22.04:
+
+```shell
+bazel run --config=gcc11 //:example -- --filename=${HOME}/denoised_image.exr
+```
+
 ## More about the example
 
 The example provides a noisy rendering of the Cornell Box.
@@ -94,5 +100,7 @@ python3 .\scripts\blob_to_cpp.py .\weights\rtlightmap_hdr.tza -o .\weights\rtlig
 
 This work is published under the Apache 2.0 License.
 
-Notes: This repository contains code copied from [TensorFlow](https://github.com/tensorflow/tensorflow) which is also under the Apache 2.0 License.
-The copyright of this work belongs to the TensorFlow authors.
+### Copyright
+
+This repository contains code copied from [TensorFlow](https://github.com/tensorflow/tensorflow) which is also under the Apache 2.0 License.
+The copyright of the corresponding files belongs to the TensorFlow authors.
