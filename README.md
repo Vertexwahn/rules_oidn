@@ -94,4 +94,5 @@ python3 .\scripts\blob_to_cpp.py .\weights\rtlightmap_hdr.tza -o .\weights\rtlig
 
 This work is published under the Apache 2.0 License.
 
-Notes: This repository contains code copied from https://github.com/tensorflow/tensorflow which is also under Appache 2.0 License.
+Notes: This repository contains code copied from [TensorFlow](https://github.com/tensorflow/tensorflow) which is also under the Apache 2.0 License.
+The copyright of this work belongs to the TensorFlow authors.

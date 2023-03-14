@@ -8,6 +8,7 @@ cc_binary(
     srcs = ["example.cpp"],
     data = ["//data"],
     deps = [
+        "@boost//:program_options",
         "@com_openexr//:OpenEXR",
         "@oidn//:OpenImageDenoise",
     ],
