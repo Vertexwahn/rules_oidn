@@ -11,11 +11,11 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 #-------------------------------------------------------------------------------------
 
 local_repository(
-    name = "de_vertexwahn_rules_oidn",
+    name = "rules_oidn",
     path = "..",
 )
 
-load("@de_vertexwahn_rules_oidn//:oidn/oidn.bzl", "oidn_deps")
+load("@rules_oidn//third_party/oidn:oidn.bzl", "oidn_deps")
 
 oidn_deps()
 
