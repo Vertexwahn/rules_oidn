@@ -184,6 +184,8 @@ void store_open_exr(const std::string_view &filename, const Image3f &image) {
 }
 
 int main(int argc, char ** argv) {
+    cout << "Simple denoising example" << endl;
+
     using namespace boost::program_options;
 
     variables_map vm;
@@ -195,13 +197,13 @@ int main(int argc, char ** argv) {
         store(parse_command_line(argc, argv, desc), vm);
         notify(vm);
     } catch (const error &ex) {
-        std::cerr << ex.what() << std::endl;
+        cerr << ex.what() << std::endl;
         return -2;
     }
 
-    std::string str_denoised_output_image_filename = vm["filename"].as<std::string>();;
- 
-    cout << "Simple denoising example" << endl;
+    string str_denoised_output_image_filename = vm["filename"].as<std::string>();;
+  
+    cout << "Filename for denoised image: " << str_denoised_output_image_filename << endl;
 
     Image3f color = load_image_openexr("data/cornel_box.naive_diffuse.box_filter.spp128.embree.exr");
     //Image3f color = load_image_openexr("data/noisy_10spp.exr");
