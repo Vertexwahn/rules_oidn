@@ -3,4 +3,4 @@
     SPDX-License-Identifier: Apache-2.0
 """
 
-workspace(name = "de_vertexwahn_rules_oidn")
+workspace(name = "rules_oidn")

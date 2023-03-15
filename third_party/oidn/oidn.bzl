@@ -25,12 +25,41 @@ def oidn_deps():
     maybe(
         http_archive,
         name = "mkl_dnn_v1",
-        build_file = "@de_vertexwahn_rules_oidn//:mkldnn_v1.BUILD",
-        sha256 = "dc2b9bc851cd8d5a6c4622f7dc215bdb6b32349962875f8bf55cceed45a4c449",
-        strip_prefix = "oneDNN-2.7.1",
+        build_file = "@rules_oidn//third_party/onednn:mkldnn_v1.BUILD",
+        sha256 = "a50993aa6265b799b040fe745e0010502f9f7103cc53a9525d59646aef006633",
+        strip_prefix = "oneDNN-2.7.3",
         urls = [
-            "https://github.com/oneapi-src/oneDNN/archive/refs/tags/v2.7.1.tar.gz",
+            "https://github.com/oneapi-src/oneDNN/archive/refs/tags/v2.7.3.tar.gz",
         ],
+    )
+
+    maybe(
+        http_archive,
+        name = "mkl_dnn_acl_compatible",
+        build_file = "@rules_oidn//third_party/onednn:mkldnn_acl.BUILD",
+        patches = [
+            "@rules_oidn//third_party/onednn:onednn_acl_threadcap.patch",
+            "@rules_oidn//third_party/onednn:onednn_acl_fixed_format_kernels.patch",
+            "@rules_oidn//third_party/onednn:onednn_acl_depthwise_convolution.patch",
+            "@rules_oidn//third_party/onednn:onednn_acl_threadpool_scheduler.patch",
+        ],
+        sha256 = "a50993aa6265b799b040fe745e0010502f9f7103cc53a9525d59646aef006633",
+        strip_prefix = "oneDNN-2.7.3",
+        urls = ["https://github.com/oneapi-src/oneDNN/archive/v2.7.3.tar.gz"],
+    )
+
+    maybe(
+        http_archive,
+        name = "compute_library",
+        sha256 = "e20a060d3c4f803889d96c2f0b865004ba3ef4e228299a44339ea1c1ba827c85",
+        strip_prefix = "ComputeLibrary-22.11",
+        build_file = "@rules_oidn//third_party/compute_library:compute_library.BUILD",
+        patches = [
+            "@rules_oidn//third_party/compute_library:compute_library.patch",
+            "@rules_oidn//third_party/compute_library:acl_fixed_format_kernels_striding.patch",
+            "@rules_oidn//third_party/compute_library:acl_openmp_fix.patch",
+        ],
+        urls = ["https://github.com/ARM-software/ComputeLibrary/archive/v22.11.tar.gz"],
     )
 
     maybe(
@@ -46,7 +75,7 @@ def oidn_deps():
     maybe(
         git_repository,
         name = "oidn-weights",
-        build_file = "@de_vertexwahn_rules_oidn//:BUILD.oidn-weights",
+        build_file = "@rules_oidn//third_party/oidn-weights:oidn-weights.BUILD",
         commit = "e9cae1b5e7814b8bc2540ff09e77e7ae874b08df",
         #remote = "https://github.com/OpenImageDenoise/oidn-weights",
         remote = "https://github.com/Vertexwahn/oidn-weights-without-git-lfs",
@@ -56,9 +85,9 @@ def oidn_deps():
     maybe(
         http_archive,
         name = "oidn",
-        build_file = "@de_vertexwahn_rules_oidn//:BUILD.oidn",
+        build_file = "@rules_oidn//third_party/oidn:oidn.BUILD",
         strip_prefix = "oidn-1.4.3",
-        patches = ["@de_vertexwahn_rules_oidn//:0001-Bazel-support.patch"],
+        patches = ["@rules_oidn//third_party/oidn:0001-Bazel-support.patch"],
         urls = [
             "https://github.com/OpenImageDenoise/oidn/archive/refs/tags/v1.4.3.tar.gz",
         ],

@@ -5,8 +5,8 @@
 
 load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
 load("@rules_ispc//:ispc.bzl", "ispc_cc_library")
-load("@de_vertexwahn_rules_oidn//:oidn/oidn_generate_cpp_from_blob.bzl", "generate_cpp_from_blob_cc_library")
-load("@de_vertexwahn_rules_oidn//:oidn/oidn.bzl", "oidn_deps")
+load("@rules_oidn//third_party/oidn:oidn_generate_cpp_from_blob.bzl", "generate_cpp_from_blob_cc_library")
+load("@rules_oidn//third_party/oidn:oidn.bzl", "oidn_deps")
 
 expand_template(
     name = "config",
@@ -143,9 +143,11 @@ cc_library(
     ],
     includes = ["include/OpenImageDenoise"],
     deps = [
-        "@mkl_dnn_v1//:mkl_dnn",
         "@oneTBB//:tbb",
-    ],
+    ] + select({
+        "@platforms//os:osx": ["@mkl_dnn_acl_compatible//:mkl_dnn_acl"],
+        "//conditions:default": ["@mkl_dnn_v1//:mkl_dnn"],
+    }),
 )
 
 py_binary(

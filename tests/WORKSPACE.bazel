@@ -11,11 +11,11 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 #-------------------------------------------------------------------------------------
 
 local_repository(
-    name = "de_vertexwahn_rules_oidn",
+    name = "rules_oidn",
     path = "..",
 )
 
-load("@de_vertexwahn_rules_oidn//:oidn/oidn.bzl", "oidn_deps")
+load("@rules_oidn//third_party/oidn:oidn.bzl", "oidn_deps")
 
 oidn_deps()
 
@@ -44,3 +44,20 @@ git_repository(
 load("@com_openexr//:bazel/third_party/openexr_deps.bzl", "openexr_deps")
 
 openexr_deps()
+
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+#-------------------------------------------------------------------------------------
+# Boost
+#-------------------------------------------------------------------------------------
+
+http_archive(
+    name = "com_github_nelhage_rules_boost",
+    url = "https://github.com/nelhage/rules_boost/archive/d303b6755ed2ce95ecce0d0ce5d2d1a764e2818d.tar.gz",
+    strip_prefix = "rules_boost-d303b6755ed2ce95ecce0d0ce5d2d1a764e2818d",
+    sha256 = "bc794c0a855ff65e847c7b65e3f00b1296797cc969b3e7624eb40181bc35b412",
+)
+
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+boost_deps()

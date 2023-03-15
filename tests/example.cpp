@@ -16,6 +16,8 @@
 using namespace Imf;
 using namespace Imath;
 
+#include "boost/program_options.hpp"
+
 #include <cassert>
 #include <cfloat>
 #include <iostream>
@@ -181,8 +183,27 @@ void store_open_exr(const std::string_view &filename, const Image3f &image) {
     file.writePixels(image.height());
 }
 
-int main() {
+int main(int argc, char ** argv) {
     cout << "Simple denoising example" << endl;
+
+    using namespace boost::program_options;
+
+    variables_map vm;
+    options_description desc{"Options"};
+    desc.add_options()
+        ("filename", value<std::string>()->default_value(std::string("denoised.exr")), "Filename where the denoised image will be stored");
+
+    try {
+        store(parse_command_line(argc, argv, desc), vm);
+        notify(vm);
+    } catch (const error &ex) {
+        cerr << ex.what() << std::endl;
+        return -2;
+    }
+
+    string str_denoised_output_image_filename = vm["filename"].as<std::string>();;
+  
+    cout << "Filename for denoised image: " << str_denoised_output_image_filename << endl;
 
     Image3f color = load_image_openexr("data/cornel_box.naive_diffuse.box_filter.spp128.embree.exr");
     //Image3f color = load_image_openexr("data/noisy_10spp.exr");
@@ -231,7 +252,7 @@ int main() {
     }
 
     cout << "Output of denoised.exr" << endl;
-    store_open_exr("denoised.exr", out);
+    store_open_exr(str_denoised_output_image_filename, out);
     cout << "finished" << endl;
 
     return 0;

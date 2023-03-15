@@ -18,7 +18,7 @@ index 120a8ca..657a43d 100644
  #endif
  
  namespace oidn {
-diff --git a/core/common.h b/core/common.h
+diff --gitcore/common.hcore/common.h
 index 7906013..51220d8 100644
 --- core/common.h
 +++ core/common.h
