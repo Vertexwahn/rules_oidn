@@ -34,6 +34,12 @@ ispc_cc_library(
         "core/tensor.isph",
         "core/vec.isph",
     ],
+    defines = [
+        "OIDN_DNNL",
+        "OIDN_STATIC_LIB",
+        "OIDN_FILTER_RT",
+        "OIDN_FILTER_RTLIGHTMAP",
+    ],
     out = "input_reorder_ispc.h",
     ispc_main_source_file = "core/input_reorder.ispc",
 )
@@ -47,6 +53,12 @@ ispc_cc_library(
         "core/math.isph",
         "core/vec.isph",
     ],
+    defines = [
+        "OIDN_DNNL",
+        "OIDN_STATIC_LIB",
+        "OIDN_FILTER_RT",
+        "OIDN_FILTER_RTLIGHTMAP",
+    ],
     out = "color_ispc.h",
     ispc_main_source_file = "core/color.ispc",
 )
@@ -59,6 +71,12 @@ ispc_cc_library(
         "core/math.isph",
         "core/output_copy.ispc",
         "core/vec.isph",
+    ],
+    defines = [
+        "OIDN_DNNL",
+        "OIDN_STATIC_LIB",
+        "OIDN_FILTER_RT",
+        "OIDN_FILTER_RTLIGHTMAP",
     ],
     out = "output_copy_ispc.h",
     ispc_main_source_file = "core/output_copy.ispc",
@@ -74,6 +92,12 @@ ispc_cc_library(
         "core/upsample.ispc",
         "core/vec.isph",
     ],
+    defines = [
+        "OIDN_DNNL",
+        "OIDN_STATIC_LIB",
+        "OIDN_FILTER_RT",
+        "OIDN_FILTER_RTLIGHTMAP",
+    ],
     out = "upsample_ispc.h",
     ispc_main_source_file = "core/upsample.ispc",
 )
@@ -88,6 +112,12 @@ ispc_cc_library(
         "core/reorder.isph",
         "core/tensor.isph",
         "core/vec.isph",
+    ],
+    defines = [
+        "OIDN_DNNL",
+        "OIDN_STATIC_LIB",
+        "OIDN_FILTER_RT",
+        "OIDN_FILTER_RTLIGHTMAP",
     ],
     out = "output_reorder_ispc.h",
     ispc_main_source_file = "core/output_reorder.ispc",

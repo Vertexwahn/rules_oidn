@@ -65,10 +65,11 @@ def oidn_deps():
         sha256 = "37941f260af212183579efb6b1e07e4075e3ab9cbd63120afd007e62367efef6",
     )
 
+    """ Change back to the original repo ttps://github.com/Vertexwahn/rules_ispc when merged """
     maybe(
         git_repository,
         name = "rules_ispc",
-        commit = "79d5e40030ff6aed749d9e59e3f06b738767b704",
-        remote = "https://github.com/Vertexwahn/rules_ispc",
+        commit = "334b2e324e5df2a3aaebfe7e3b922aeb4afe37b5",
+        remote = "https://github.com/parvit/rules_ispc",
         shallow_since = "1677167397 +0100",
     )

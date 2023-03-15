@@ -207,20 +207,22 @@ int main() {
     int height = out.height();
 
     oidn::DeviceRef device = oidn::newDevice();
-    device.set("verbose", 1);
+    device.set("verbose", 2);
     device.commit();
 
     // Create a filter for denoising a beauty (color) image using optional auxiliary images too
     oidn::FilterRef filter = device.newFilter("RT"); // generic ray tracing filter
     filter.setImage("color",  colorPtr,  oidn::Format::Float3, width, height); // beauty
-    //filter.setImage("albedo", albedoPtr, oidn::Format::Float3, width, height); // auxiliary
-    //filter.setImage("normal", normalPtr, oidn::Format::Float3, width, height); // auxiliary
+    filter.setImage("albedo", albedoPtr, oidn::Format::Float3, width, height); // auxiliary
+    filter.setImage("normal", normalPtr, oidn::Format::Float3, width, height); // auxiliary
     filter.setImage("output", outputPtr, oidn::Format::Float3, width, height); // denoised beauty
     filter.set("hdr", true); // beauty image is HDR
     filter.commit();
 
     // Filter the image
+    cout << "Filter execution" << endl;
     filter.execute();
+    cout << "Filter execution done" << endl;
 
     // Check for errors
     const char* errorMessage;
@@ -228,7 +230,9 @@ int main() {
         std::cout << "Error: " << errorMessage << std::endl;
     }
 
+    cout << "Output of denoised.exr" << endl;
     store_open_exr("denoised.exr", out);
+    cout << "finished" << endl;
 
     return 0;
 }
