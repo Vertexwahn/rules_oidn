@@ -4,13 +4,21 @@
 
 Rules for using [Intel Open Image Denoise](https://www.openimagedenoise.org/) in your Bazel builds.
 
+## What it does?
+
+Open Image Denoise can be use to denoise your images.
+Given a noisy input image Open Image Denoise can produce a denoised output image:
+
+![Denoised](docs/oidn.png)
+
+More comparison images can be found [here](docs/denoised.pdf).
+
+rules_oidn helps you to embed Open Image Denoise into your Bazel builds.
+
 ## Current status
 
-Currently, these rules compile on Ubuntu 22.04 and Windows.
-Building on macOS is currently not working.
-If you run the example (see "Quick start") the following output is generated:
-
-![Denoised image](tests/data/denoised_onlyColor.png)
+Currently, these rules compile on Ubuntu 22.04 (other Linux distributions should also work) and Windows.
+Building on macOS is currently not working (arm64 requires a different compilation of [oneDNN](https://github.com/oneapi-src/oneDNN)).
 
 ## Quick start
 
@@ -46,10 +54,10 @@ bazel run --config=vs2022 //:example
 
 See [tests/.bazelrc](tests/.bazelrc) for other supported build configs.
 
-You can also provide a filename as an argument, e.g. on Ubuntu 22.04:
+You can also provide the filenames of the input and output image as an argument, e.g. on Ubuntu 22.04:
 
 ```shell
-bazel run --config=gcc11 //:example -- --filename=${HOME}/denoised_image.exr
+bazel run --config=gcc11 //:example -- --input=${HOME}/rules_oidn/tests/data/cornell_box.naive_diffuse.box_filter.spp64.embree.exr --output=${HOME}/denoised_spp64.exr
 ```
 
 ## More about the example
@@ -66,7 +74,9 @@ And a normal image:
 
 ![Noisy](tests/data/normal_10spp.png)
 
-This serves as an input for the example.
+Currently, only the noisy rendering serves as an input for the example. 
+The albedo and normal images are not used.
+But you can easily modify the example code to use them.
 
 ## Other projects related to this
 
@@ -100,7 +110,7 @@ python3 .\scripts\blob_to_cpp.py .\weights\rtlightmap_hdr.tza -o .\weights\rtlig
 
 This work is published under the Apache 2.0 License.
 
-### Copyright
+### Notes on copyright
 
 This repository contains code copied from [TensorFlow](https://github.com/tensorflow/tensorflow) which is also under the Apache 2.0 License.
 The copyright of the corresponding files belongs to the TensorFlow authors.

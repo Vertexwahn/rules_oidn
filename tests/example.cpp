@@ -85,22 +85,6 @@ Image3f load_image_openexr(std::string_view filename) {
     int width = dw.max.x - dw.min.x + 1;
     int height = dw.max.y - dw.min.y + 1;
 
-    /*
-    bool hasRed = false;
-    bool hasGreen = false;
-    bool hasBlue = false;
-
-    for (ChannelList::ConstIterator it = header.channels().begin(), ite = header.channels().end(); it != ite; it++) {
-        if ((strcmp(it.name(), "R") == 0)) { hasRed = true; }
-        if ((strcmp(it.name(), "G") == 0)) { hasGreen = true; }
-        if ((strcmp(it.name(), "B") == 0)) { hasBlue = true; }
-        if (it.channel().type != HALF) {
-            //HDR_LOG("Unable to open EXR file \"%s\" (unsupported data type %s)", filename, it.channel().type);
-            //return (IEFileCantOpen);
-        }
-    }
-    */
-
     Imf::Array2D<float> rPixels;
     Imf::Array2D<float> gPixels;
     Imf::Array2D<float> bPixels;
@@ -191,7 +175,8 @@ int main(int argc, char ** argv) {
     variables_map vm;
     options_description desc{"Options"};
     desc.add_options()
-        ("filename", value<std::string>()->default_value(std::string("denoised.exr")), "Filename where the denoised image will be stored");
+        ("input", value<std::string>()->default_value(std::string("data/cornel_box.naive_diffuse.box_filter.spp128.embree.exr")), "Filename of noisy input image")
+        ("output", value<std::string>()->default_value(std::string("denoised.exr")), "Filename where the denoised image will be stored");
 
     try {
         store(parse_command_line(argc, argv, desc), vm);
@@ -201,14 +186,15 @@ int main(int argc, char ** argv) {
         return -2;
     }
 
-    string str_denoised_output_image_filename = vm["filename"].as<std::string>();;
+    string str_input_image_filename = vm["input"].as<std::string>();
+    string str_denoised_output_image_filename = vm["output"].as<std::string>();;
   
     cout << "Filename for denoised image: " << str_denoised_output_image_filename << endl;
 
-    Image3f color = load_image_openexr("data/cornel_box.naive_diffuse.box_filter.spp128.embree.exr");
+    Image3f color = load_image_openexr(str_input_image_filename);
     //Image3f color = load_image_openexr("data/noisy_10spp.exr");
-    Image3f normal = load_image_openexr("data/normal_10spp.exr");
-    Image3f albedo = load_image_openexr("data/albedo_10spp.exr");
+    //Image3f normal = load_image_openexr("data/normal_10spp.exr");
+    //Image3f albedo = load_image_openexr("data/albedo_10spp.exr");
     Image3f out{color.width(), color.height()};
 
     // for debug reasons the color image can be initialized with a const color
@@ -221,14 +207,14 @@ int main(int argc, char ** argv) {
     }
 
     float* colorPtr = color.data();
-    float* albedoPtr = albedo.data();
-    float* normalPtr = normal.data();
+    //float* albedoPtr = albedo.data();
+    //float* normalPtr = normal.data();
     float* outputPtr = out.data();
     int width = out.width();
     int height = out.height();
 
     oidn::DeviceRef device = oidn::newDevice();
-    device.set("verbose", 1);
+    device.set("verbose", 2);
     device.commit();
 
     // Create a filter for denoising a beauty (color) image using optional auxiliary images too
@@ -241,7 +227,9 @@ int main(int argc, char ** argv) {
     filter.commit();
 
     // Filter the image
+    cout << "Filter execution" << endl;
     filter.execute();
+    cout << "Filter execution done" << endl;
 
     // Check for errors
     const char* errorMessage;
@@ -249,7 +237,9 @@ int main(int argc, char ** argv) {
         std::cout << "Error: " << errorMessage << std::endl;
     }
 
+    cout << "Output of denoised.exr" << endl;
     store_open_exr(str_denoised_output_image_filename, out);
+    cout << "finished" << endl;
 
     return 0;
 }
