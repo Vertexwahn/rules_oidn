@@ -66,10 +66,10 @@ def oidn_deps():
         http_archive,
         name = "oneTBB",
         urls = [
-            "https://github.com/oneapi-src/oneTBB/archive/154cc73ca4d359621202399cc0c3c91058e56e79.zip",
+            "https://github.com/oneapi-src/oneTBB/archive/a6a884ad0a4920415c4db88ea8927e5877dbe545.zip",
         ],
-        strip_prefix = "oneTBB-154cc73ca4d359621202399cc0c3c91058e56e79",
-        sha256 = "aa381b093a1149921b23009ce6d4b536c7a29792becb4ea14a47f7bed840b347",
+        strip_prefix = "oneTBB-a6a884ad0a4920415c4db88ea8927e5877dbe545",
+        sha256 = "f39d451f58e0fb6f29657413e7029bc4641a758b232c2744e0401dc037f28faa",
     )
 
     maybe(
@@ -94,10 +94,9 @@ def oidn_deps():
         sha256 = "37941f260af212183579efb6b1e07e4075e3ab9cbd63120afd007e62367efef6",
     )
 
-    maybe(
-        git_repository,
+    http_archive(
         name = "rules_ispc",
-        commit = "294b45b54e4588fc0e7b3447e40ddc80574c239c",
-        remote = "https://github.com/Vertexwahn/rules_ispc",
-        #shallow_since = "1677167397 +0100",
+        sha256 = "b6c92f4e34f94ee17466b7766cc28c53175e934141f518c61984e1a5ffabb5f3",
+        strip_prefix = "rules_ispc-0.0.1",
+        url = "https://github.com/Vertexwahn/rules_ispc/releases/download/v0.0.1/rules_ispc-v0.0.1.tar.gz",
     )
