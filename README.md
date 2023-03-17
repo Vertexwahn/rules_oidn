@@ -52,6 +52,12 @@ bazel run --config=gcc11 //:example
 bazel run --config=vs2022 //:example
 ```
 
+*Run example with macOS:*
+
+```shell
+bazel run --config=macos //:example
+```
+
 See [tests/.bazelrc](tests/.bazelrc) for other supported build configs.
 
 You can also provide the filenames of the input and output image as an argument, e.g. on Ubuntu 22.04:

@@ -146,6 +146,7 @@ cc_library(
             "src/cpu/x64/**",
         ],
     ),
+    copts = _DNNL_COPTS_THREADPOOL,
     #copts = ["_DNNL_COPTS_THREADPOOL"], #select({
     #    "@org_tensorflow//third_party/mkl_dnn:build_with_mkl_aarch64_openmp": _DNNL_COPTS_OMP,
     #    "//conditions:default": _DNNL_COPTS_THREADPOOL,
