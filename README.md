@@ -20,6 +20,17 @@ rules_oidn helps you to embed Open Image Denoise into your Bazel builds.
 Currently, these rules compile on Ubuntu 22.04 (other Linux distributions should also work) and Windows.
 Building on macOS is currently not working (arm64 requires a different compilation of [oneDNN](https://github.com/oneapi-src/oneDNN)).
 
+The goal of rules_oidn is not to reproduce a 1:1 binary compatible library that is equal to a CMake build.
+The focus is on a the compilation of a working library that can be used in Bazel projects.
+The follwoing table compares the precombilded version of OIDN to this Bazel build:
+
+| Dependency                            | Bazel                                     | [Precompiled Open Image Denoise v1.4.3](https://github.com/OpenImageDenoise/oidn/releases/tag/v1.4.3) |
+|---------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| oneDNN                                | 2.7.3                                     | 2.2.4                                                                                                 |
+| Intel® Implicit SPMD Program Compiler | v1.19.0                                   | ?                                                                                                     |
+| ComputeLibrary                        |                                           |                                                                                                       |
+| oneTBB                                | a6a884ad0a4920415c4db88ea8927e5877dbe545  | oneTBB 2021.5.0                                                                                       |
+
 ## Quick start
 
 **Prerequisites:**
