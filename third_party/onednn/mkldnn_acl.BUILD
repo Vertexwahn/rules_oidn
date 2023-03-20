@@ -115,7 +115,7 @@ _DNNL_RUNTIME_OMP = {
 expand_template(
     name = "dnnl_config_h",
     out = "include/oneapi/dnnl/dnnl_config.h",
-    substitutions = _DNNL_RUNTIME_THREADPOOL, #select({
+    substitutions = _DNNL_RUNTIME_THREADPOOL,  #select({
     #    "@org_tensorflow//third_party/mkl_dnn:build_with_mkl_aarch64_openmp": _DNNL_RUNTIME_OMP,
     #    "//conditions:default": _DNNL_RUNTIME_THREADPOOL,
     #}),
@@ -141,12 +141,14 @@ cc_library(
             "src/common/*.cpp",
             "src/cpu/**/*.cpp",
             "src/cpu/*.cpp",
+        ] + [
+            "src/common/ittnotify/jitprofiling.h",
         ],
         exclude = [
             "src/cpu/x64/**",
         ],
     ),
-    copts = _DNNL_COPTS_THREADPOOL, #+ ["-march=armv8.2-a+sve"],
+    copts = _DNNL_COPTS_THREADPOOL,  #+ ["-march=armv8.2-a+sve"],
     #copts = ["_DNNL_COPTS_THREADPOOL"], #select({
     #    "@org_tensorflow//third_party/mkl_dnn:build_with_mkl_aarch64_openmp": _DNNL_COPTS_OMP,
     #    "//conditions:default": _DNNL_COPTS_THREADPOOL,
