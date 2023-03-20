@@ -48,18 +48,25 @@ def oidn_deps():
         urls = ["https://github.com/oneapi-src/oneDNN/archive/v2.7.3.tar.gz"],
     )
 
+    #maybe(
+    #    http_archive,
+    #    name = "compute_library",
+    #    sha256 = "e20a060d3c4f803889d96c2f0b865004ba3ef4e228299a44339ea1c1ba827c85",
+    #    strip_prefix = "ComputeLibrary-22.11",
+    #    build_file = "@rules_oidn//third_party/compute_library:compute_library.BUILD",
+    #    patches = [
+    #        "@rules_oidn//third_party/compute_library:compute_library.patch",
+    #        "@rules_oidn//third_party/compute_library:acl_fixed_format_kernels_striding.patch",
+    #        "@rules_oidn//third_party/compute_library:acl_openmp_fix.patch",
+    #    ],
+    #    urls = ["https://github.com/ARM-software/ComputeLibrary/archive/v22.11.tar.gz"],
+    #)
+
     maybe(
-        http_archive,
+        git_repository,
         name = "compute_library",
-        sha256 = "e20a060d3c4f803889d96c2f0b865004ba3ef4e228299a44339ea1c1ba827c85",
-        strip_prefix = "ComputeLibrary-22.11",
-        build_file = "@rules_oidn//third_party/compute_library:compute_library.BUILD",
-        patches = [
-            "@rules_oidn//third_party/compute_library:compute_library.patch",
-            "@rules_oidn//third_party/compute_library:acl_fixed_format_kernels_striding.patch",
-            "@rules_oidn//third_party/compute_library:acl_openmp_fix.patch",
-        ],
-        urls = ["https://github.com/ARM-software/ComputeLibrary/archive/v22.11.tar.gz"],
+        remote = "https://github.com/Vertexwahn/ComputeLibrary.git",
+        commit = "38f6df217c601f0714598bda0efa019439811a0a",
     )
 
     maybe(
