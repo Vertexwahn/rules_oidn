@@ -21,7 +21,7 @@ Currently, these rules compile on Ubuntu 22.04 (other Linux distributions should
 Building on macOS is currently not working.
 
 The goal of `rules_oidn` is not to reproduce a 1:1 binary compatible library that is equal to a CMake build.
-The focus is on the compilation of a working library that can be used in Bazel projects.
+The focus is on the compilation of a working library that can be used in Bazel projects and is close to the CMake build.
 The following table compares the precompiled version of OIDN to this Bazel build:
 
 | Dependency                            | Bazel                                     | [Precompiled Open Image Denoise v1.4.3](https://github.com/OpenImageDenoise/oidn/releases/tag/v1.4.3) |
