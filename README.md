@@ -18,11 +18,11 @@ rules_oidn helps you to embed Open Image Denoise into your Bazel builds.
 ## Current status
 
 Currently, these rules compile on Ubuntu 22.04 (other Linux distributions should also work) and Windows.
-Building on macOS is currently not working (arm64 requires a different compilation of [oneDNN](https://github.com/oneapi-src/oneDNN)).
+Building on macOS is currently not working.
 
-The goal of rules_oidn is not to reproduce a 1:1 binary compatible library that is equal to a CMake build.
-The focus is on a the compilation of a working library that can be used in Bazel projects.
-The follwoing table compares the precombilded version of OIDN to this Bazel build:
+The goal of `rules_oidn` is not to reproduce a 1:1 binary compatible library that is equal to a CMake build.
+The focus is on the compilation of a working library that can be used in Bazel projects.
+The following table compares the precompiled version of OIDN to this Bazel build:
 
 | Dependency                            | Bazel                                     | [Precompiled Open Image Denoise v1.4.3](https://github.com/OpenImageDenoise/oidn/releases/tag/v1.4.3) |
 |---------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------|
@@ -30,6 +30,20 @@ The follwoing table compares the precombilded version of OIDN to this Bazel buil
 | Intel® Implicit SPMD Program Compiler | v1.19.0                                   | ?                                                                                                     |
 | ComputeLibrary                        |                                           |                                                                                                       |
 | oneTBB                                | a6a884ad0a4920415c4db88ea8927e5877dbe545  | oneTBB 2021.5.0                                                                                       |
+
+### macOS Support
+
+Building on macOS is currently not working.
+Initially, I was running here in the wrong direction.
+I was thinking that the macOS version of OIDN 1.4.3 is also using oneDNN.
+Therefore, I tried to fix this code path.
+E.g. fixing ComputeLibrary OpenMP issues with the use of Apple Clang,
+come up with a macOS build OneDNN, 
+or try to fix `isISASupported(ISA::AVX512_CORE)` issue in OIDN.
+Finally, I found out that ODIN 1.4.3 uses on macOS BNNS as a neural runtime.
+Something that I could have figured out quite earlier, 
+but anyway finally I found it out.
+My hope is that the BNNS path can be bazelized straight forward.
 
 ## Quick start
 
