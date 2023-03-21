@@ -13,7 +13,7 @@ Given a noisy input image Open Image Denoise can produce a denoised output image
 
 More comparison images can be found [here](docs/denoised.pdf).
 
-rules_oidn helps you to embed Open Image Denoise into your Bazel builds.
+`rules_oidn` helps you to embed Open Image Denoise 1.4.3 into your Bazel builds.
 
 ## Current status
 
@@ -28,7 +28,7 @@ The following table compares the precompiled version of OIDN to this Bazel build
 |---------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | oneDNN                                | 2.7.3                                     | 2.2.4                                                                                                 |
 | Intel® Implicit SPMD Program Compiler | v1.19.0                                   | ?                                                                                                     |
-| ComputeLibrary                        |                                           |                                                                                                       |
+| ComputeLibrary                        | 22.11                                     | ?                                                                                                     |
 | oneTBB                                | a6a884ad0a4920415c4db88ea8927e5877dbe545  | oneTBB 2021.5.0                                                                                       |
 
 ### macOS Support
