@@ -24,8 +24,8 @@ def oidn_deps():
 
     maybe(
         http_archive,
-        name = "mkl_dnn_v1",
-        build_file = "@rules_oidn//third_party/onednn:mkldnn_v1.BUILD",
+        name = "onednn",
+        build_file = "@rules_oidn//third_party/onednn:onednn.BUILD",
         sha256 = "a50993aa6265b799b040fe745e0010502f9f7103cc53a9525d59646aef006633",
         strip_prefix = "oneDNN-2.7.3",
         urls = [
@@ -33,34 +33,34 @@ def oidn_deps():
         ],
     )
 
-    maybe(
-        http_archive,
-        name = "mkl_dnn_acl_compatible",
-        build_file = "@rules_oidn//third_party/onednn:mkldnn_acl.BUILD",
-        patches = [
-            "@rules_oidn//third_party/onednn:onednn_acl_threadcap.patch",
-            "@rules_oidn//third_party/onednn:onednn_acl_fixed_format_kernels.patch",
-            "@rules_oidn//third_party/onednn:onednn_acl_depthwise_convolution.patch",
-            "@rules_oidn//third_party/onednn:onednn_acl_threadpool_scheduler.patch",
-        ],
-        sha256 = "a50993aa6265b799b040fe745e0010502f9f7103cc53a9525d59646aef006633",
-        strip_prefix = "oneDNN-2.7.3",
-        urls = ["https://github.com/oneapi-src/oneDNN/archive/v2.7.3.tar.gz"],
-    )
+    #maybe(
+    #    http_archive,
+    #    name = "mkl_dnn_acl_compatible",
+    #    build_file = "@rules_oidn//third_party/onednn:mkldnn_acl.BUILD",
+    #    patches = [
+    #        "@rules_oidn//third_party/onednn:onednn_acl_threadcap.patch",
+    #        "@rules_oidn//third_party/onednn:onednn_acl_fixed_format_kernels.patch",
+    #        "@rules_oidn//third_party/onednn:onednn_acl_depthwise_convolution.patch",
+    #        "@rules_oidn//third_party/onednn:onednn_acl_threadpool_scheduler.patch",
+    #    ],
+    #    sha256 = "a50993aa6265b799b040fe745e0010502f9f7103cc53a9525d59646aef006633",
+    #    strip_prefix = "oneDNN-2.7.3",
+    #    urls = ["https://github.com/oneapi-src/oneDNN/archive/v2.7.3.tar.gz"],
+    #)
 
-    maybe(
-        http_archive,
-        name = "compute_library",
-        sha256 = "e20a060d3c4f803889d96c2f0b865004ba3ef4e228299a44339ea1c1ba827c85",
-        strip_prefix = "ComputeLibrary-22.11",
-        build_file = "@rules_oidn//third_party/compute_library:compute_library.BUILD",
-        patches = [
-            "@rules_oidn//third_party/compute_library:compute_library.patch",
-            "@rules_oidn//third_party/compute_library:acl_fixed_format_kernels_striding.patch",
-            "@rules_oidn//third_party/compute_library:acl_openmp_fix.patch",
-        ],
-        urls = ["https://github.com/ARM-software/ComputeLibrary/archive/v22.11.tar.gz"],
-    )
+    #maybe(
+    #    http_archive,
+    #    name = "compute_library",
+    #    sha256 = "e20a060d3c4f803889d96c2f0b865004ba3ef4e228299a44339ea1c1ba827c85",
+    #    strip_prefix = "ComputeLibrary-22.11",
+    #    build_file = "@rules_oidn//third_party/compute_library:compute_library.BUILD",
+    #    patches = [
+    #        "@rules_oidn//third_party/compute_library:compute_library.patch",
+    #        "@rules_oidn//third_party/compute_library:acl_fixed_format_kernels_striding.patch",
+    #        "@rules_oidn//third_party/compute_library:acl_openmp_fix.patch",
+    #    ],
+    #    urls = ["https://github.com/ARM-software/ComputeLibrary/archive/v22.11.tar.gz"],
+    #)
 
     #maybe(
     #    git_repository,

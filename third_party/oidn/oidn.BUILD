@@ -23,6 +23,21 @@ expand_template(
     template = "include/OpenImageDenoise/config.h.in",
 )
 
+COMMON_DEFINES = select({
+    "@platforms//os:osx": [
+        "OIDN_DNNL",
+        "OIDN_STATIC_LIB",
+        "OIDN_FILTER_RT",
+        "OIDN_FILTER_RTLIGHTMAP",
+    ],
+    "//conditions:default": [
+        "OIDN_BNNS",
+        "OIDN_STATIC_LIB",
+        "OIDN_FILTER_RT",
+        "OIDN_FILTER_RTLIGHTMAP",
+    ],
+})
+
 ispc_cc_library(
     name = "input_reorder_ispc",
     srcs = [
@@ -34,13 +49,13 @@ ispc_cc_library(
         "core/tensor.isph",
         "core/vec.isph",
     ],
+    out = "input_reorder_ispc.h",
     defines = [
-        "OIDN_DNNL",
+        "OIDN_BNNS",
         "OIDN_STATIC_LIB",
         "OIDN_FILTER_RT",
         "OIDN_FILTER_RTLIGHTMAP",
     ],
-    out = "input_reorder_ispc.h",
     ispc_main_source_file = "core/input_reorder.ispc",
 )
 
@@ -53,13 +68,8 @@ ispc_cc_library(
         "core/math.isph",
         "core/vec.isph",
     ],
-    defines = [
-        "OIDN_DNNL",
-        "OIDN_STATIC_LIB",
-        "OIDN_FILTER_RT",
-        "OIDN_FILTER_RTLIGHTMAP",
-    ],
     out = "color_ispc.h",
+    defines = COMMON_DEFINES,
     ispc_main_source_file = "core/color.ispc",
 )
 
@@ -72,13 +82,8 @@ ispc_cc_library(
         "core/output_copy.ispc",
         "core/vec.isph",
     ],
-    defines = [
-        "OIDN_DNNL",
-        "OIDN_STATIC_LIB",
-        "OIDN_FILTER_RT",
-        "OIDN_FILTER_RTLIGHTMAP",
-    ],
     out = "output_copy_ispc.h",
+    defines = COMMON_DEFINES,
     ispc_main_source_file = "core/output_copy.ispc",
 )
 
@@ -92,13 +97,8 @@ ispc_cc_library(
         "core/upsample.ispc",
         "core/vec.isph",
     ],
-    defines = [
-        "OIDN_DNNL",
-        "OIDN_STATIC_LIB",
-        "OIDN_FILTER_RT",
-        "OIDN_FILTER_RTLIGHTMAP",
-    ],
     out = "upsample_ispc.h",
+    defines = COMMON_DEFINES,
     ispc_main_source_file = "core/upsample.ispc",
 )
 
@@ -113,13 +113,8 @@ ispc_cc_library(
         "core/tensor.isph",
         "core/vec.isph",
     ],
-    defines = [
-        "OIDN_DNNL",
-        "OIDN_STATIC_LIB",
-        "OIDN_FILTER_RT",
-        "OIDN_FILTER_RTLIGHTMAP",
-    ],
     out = "output_reorder_ispc.h",
+    defines = COMMON_DEFINES,
     ispc_main_source_file = "core/output_reorder.ispc",
 )
 
@@ -145,8 +140,8 @@ cc_library(
     deps = [
         "@oneTBB//:tbb",
     ] + select({
-        "@platforms//os:osx": ["@mkl_dnn_acl_compatible//:mkl_dnn_acl"],
-        "//conditions:default": ["@mkl_dnn_v1//:mkl_dnn"],
+        "@platforms//os:osx": [],
+        "//conditions:default": ["@onednn//:onednn"],
     }),
 )
 
@@ -226,12 +221,7 @@ cc_library(
         "include/OpenImageDenoise/oidn.h",
         "include/OpenImageDenoise/oidn.hpp",
     ],
-    defines = [
-        "OIDN_DNNL",
-        "OIDN_STATIC_LIB",
-        "OIDN_FILTER_RT",
-        "OIDN_FILTER_RTLIGHTMAP",
-    ],
+    defines = COMMON_DEFINES,
     includes = [
         "core",
         "include",
