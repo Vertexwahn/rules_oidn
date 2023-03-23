@@ -6,7 +6,7 @@
 load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
 load("@rules_ispc//:ispc.bzl", "ispc_cc_library")
 load("@rules_oidn//third_party/oidn:oidn_generate_cpp_from_blob.bzl", "generate_cpp_from_blob_cc_library")
-load("@rules_oidn//third_party/oidn:oidn.bzl", "oidn_deps")
+load("@rules_oidn//third_party/oidn:deps.bzl", "oidn_deps")
 
 expand_template(
     name = "config",

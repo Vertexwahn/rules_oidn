@@ -15,7 +15,7 @@ local_repository(
     path = "..",
 )
 
-load("@rules_oidn//third_party/oidn:oidn.bzl", "oidn_deps")
+load("@rules_oidn//third_party/oidn:deps.bzl", "oidn_deps")
 
 oidn_deps()
 
@@ -37,7 +37,7 @@ register_ispc_toolchains()
 
 git_repository(
     name = "com_openexr",
-    commit = "436fcd2829ae9a8965af1db15ac8531fdc8b96ce",
+    commit = "f29c01b8a009e6de483f9f1111ebefd840b24eae",
     remote = "https://github.com/AcademySoftwareFoundation/openexr/",
 )
 

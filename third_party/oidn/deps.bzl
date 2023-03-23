@@ -73,10 +73,10 @@ def oidn_deps():
         http_archive,
         name = "oneTBB",
         urls = [
-            "https://github.com/oneapi-src/oneTBB/archive/a6a884ad0a4920415c4db88ea8927e5877dbe545.zip",
+            "https://github.com/oneapi-src/oneTBB/archive/e1f0f36054d2b6e78132b0f5bcecefb11a67d660.zip",
         ],
-        strip_prefix = "oneTBB-a6a884ad0a4920415c4db88ea8927e5877dbe545",
-        sha256 = "f39d451f58e0fb6f29657413e7029bc4641a758b232c2744e0401dc037f28faa",
+        strip_prefix = "oneTBB-e1f0f36054d2b6e78132b0f5bcecefb11a67d660",
+        sha256 = "212b6d0d016775fd5a834b740ffeeb459919d5488e4ac1d1427efdce07d5e5d8",
     )
 
     maybe(
