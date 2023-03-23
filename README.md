@@ -29,7 +29,7 @@ The following table compares the precompiled version of OIDN to this Bazel build
 | oneDNN                                | 2.7.3                                     | 2.2.4                                                                                                 |
 | Intel® Implicit SPMD Program Compiler | v1.19.0                                   | ?                                                                                                     |
 | ComputeLibrary                        | 22.11                                     | ?                                                                                                     |
-| oneTBB                                | a6a884ad0a4920415c4db88ea8927e5877dbe545  | oneTBB 2021.5.0                                                                                       |
+| oneTBB                                | e1f0f36054d2b6e78132b0f5bcecefb11a67d660  | oneTBB 2021.5.0                                                                                       |
 
 ### macOS Support
 
@@ -44,7 +44,7 @@ COMMON_DEFINES = [
 ]
 ```
 
-This still needs to be done manually sicne `ispc_cc_library` is macro and cannot resolve selects to support different operating systems here. 
+This still needs to be done manually sicne `ispc_cc_library` is a macro and cannot resolve selects to support different operating systems here. 
 More details [here](https://stackoverflow.com/questions/75827650/how-to-work-around-select-is-not-iterable-in-a-macro).
 [`rules_ispc`](https://github.com/Vertexwahn/rules_ispc) has to be improved here first (details [here](https://stackoverflow.com/questions/75828030/how-to-convert-a-macro-that-invokes-native-genrule-and-native-cc-library-to-a-ru))
 
@@ -112,17 +112,6 @@ Currently, only the noisy rendering serves as an input for the example.
 The albedo and normal images are not used.
 But you can easily modify the example code to use them.
 
-## Other projects related to this
-
-There is a command line tool that makes use of OIDN:
-https://declanrussell.com/portfolio/intel-open-image-denoiser-2/
-
-How to run it:
-
-```shell
-.\Denoiser.exe -i .\noisy_10spp.exr -o denoised.exr -a .\albedo_10spp.exr -n .\normal_10spp.exr
-```
-
 ## Generating weights manually
 
 ```shell
@@ -143,6 +132,10 @@ python3 .\scripts\blob_to_cpp.py .\weights\rtlightmap_hdr.tza -o .\weights\rtlig
 ## Reading material
 
 - [DNND 1: a Deep Neural Network Dive](https://maxliani.wordpress.com/2023/03/17/dnnd-1-a-deep-neural-network-dive/)
+- [Declan Russell's blog: Intels Open Image AI denoiser](https://declanrussell.com/portfolio/intel-open-image-denoiser-2/)
+- [Bazelizing Open Image Denoise — Part 1: The journey begins](https://medium.com/@Vertexwahn/bazelizing-open-image-denoise-part-1-the-journey-begins-a16c78ea1b88)
+- [Bazelizing Open Image Denoise — Part 2: More details about the bazelization](https://medium.com/@Vertexwahn/bazelizing-open-image-denoise-part-2-more-details-about-the-bazelization-aff1bf904798)
+- [Bazelizing Open Image Denoise — Part 3: A failing unit test](https://medium.com/@Vertexwahn/bazelizing-open-image-denoise-part-3-a-failing-unit-test-695fb829931c)
 
 ## License
 
