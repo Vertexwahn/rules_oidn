@@ -18,7 +18,7 @@ More comparison images can be found [here](docs/denoised.pdf).
 ## Current status
 
 Currently, these rules compile on Ubuntu 22.04 (other Linux distributions should also work) and Windows.
-Building on macOS is currently not working.
+Building on macOS does also work with a minior modification.
 
 The goal of `rules_oidn` is not to reproduce a 1:1 binary compatible library that is equal to a CMake build.
 The focus is on the compilation of a working library that can be used in Bazel projects and is close to the CMake build.
@@ -33,17 +33,20 @@ The following table compares the precompiled version of OIDN to this Bazel build
 
 ### macOS Support
 
-Building on macOS is currently not working.
-Initially, I was running here in the wrong direction.
-I was thinking that the macOS version of OIDN 1.4.3 is also using oneDNN.
-Therefore, I tried to fix this code path.
-E.g. fixing ComputeLibrary OpenMP issues with the use of Apple Clang,
-come up with a macOS build OneDNN, 
-or try to fix `isISASupported(ISA::AVX512_CORE)` issue in OIDN.
-Finally, I found out that ODIN 1.4.3 uses on macOS BNNS as a neural runtime.
-Something that I could have figured out quite earlier, 
-but anyway finally I found it out.
-My hope is that the BNNS path can be bazelized straight forward.
+If you want to use these rules on macOS you simply need to modify the `oidn.BUILD` file:
+
+```python
+COMMON_DEFINES = [
+    "OIDN_DNNL",  # change this to OIDN_BNNS for macOS
+    "OIDN_STATIC_LIB",
+    "OIDN_FILTER_RT",
+    "OIDN_FILTER_RTLIGHTMAP",
+]
+```
+
+This still needs to be done manually sicne `ispc_cc_library` is macro and cannot resolve selects to support different operating systems here. 
+More details [here](https://stackoverflow.com/questions/75827650/how-to-work-around-select-is-not-iterable-in-a-macro).
+[`rules_ispc`](https://github.com/Vertexwahn/rules_ispc) has to be improved here first (details [here](https://stackoverflow.com/questions/75828030/how-to-convert-a-macro-that-invokes-native-genrule-and-native-cc-library-to-a-ru))
 
 ## Quick start
 
