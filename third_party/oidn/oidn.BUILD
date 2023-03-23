@@ -50,12 +50,7 @@ ispc_cc_library(
         "core/vec.isph",
     ],
     out = "input_reorder_ispc.h",
-    defines = [
-        "OIDN_BNNS",
-        "OIDN_STATIC_LIB",
-        "OIDN_FILTER_RT",
-        "OIDN_FILTER_RTLIGHTMAP",
-    ],
+    defines = COMMON_DEFINES,
     ispc_main_source_file = "core/input_reorder.ispc",
 )
 
@@ -226,6 +221,10 @@ cc_library(
         "core",
         "include",
     ],
+    linkopts = select({
+        "@platforms//os:osx": ["-framework Accelerate"],
+        "//conditions:default": [],
+    }),
     visibility = ["//visibility:public"],
     deps = [
         ":color_ispc",
