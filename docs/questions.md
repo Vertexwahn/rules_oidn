@@ -109,3 +109,14 @@ When I remove the select from `COMMON_DEFINES`, e.g. on macOS this way:
     ]
 
 It works. As Bazel reports `select is not iterable`. What is the right way to solve this issue? Do I need to convert `ispc_cc_library` macro to a rule? Or is there a easy workaround?
+
+*How to reproduce:*
+
+```shell
+git clone https://github.com/Vertexwahn/rules_ispc.git
+cd rules_ispc/tests/defines
+bazel build //defines:main # should work
+# no remove comment from line 16 in rules_ispc/tests/defines/BUILD.bazel -> #defines = COMMON_DEFINES,  # this is currenlty not working
+# build again
+bazel build //defines:main # should fail
+```
