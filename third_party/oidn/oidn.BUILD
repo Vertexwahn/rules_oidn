@@ -41,7 +41,7 @@ COMMON_DEFINES = select({
 '''
 
 COMMON_DEFINES = [
-    "OIDN_BNNS",
+    "OIDN_DNNL",  # change this to OIDN_BNNS for macOS
     "OIDN_STATIC_LIB",
     "OIDN_FILTER_RT",
     "OIDN_FILTER_RTLIGHTMAP",
