@@ -136,6 +136,7 @@ python3 .\scripts\blob_to_cpp.py .\weights\rtlightmap_hdr.tza -o .\weights\rtlig
 - [Bazelizing Open Image Denoise — Part 1: The journey begins](https://medium.com/@Vertexwahn/bazelizing-open-image-denoise-part-1-the-journey-begins-a16c78ea1b88)
 - [Bazelizing Open Image Denoise — Part 2: More details about the bazelization](https://medium.com/@Vertexwahn/bazelizing-open-image-denoise-part-2-more-details-about-the-bazelization-aff1bf904798)
 - [Bazelizing Open Image Denoise — Part 3: A failing unit test](https://medium.com/@Vertexwahn/bazelizing-open-image-denoise-part-3-a-failing-unit-test-695fb829931c)
+- [Bazelizing Open Image Denoise — Part 4: Issue with black stipes solved](https://medium.com/@Vertexwahn/bazelizing-open-image-denoise-part-4-issue-with-black-stipes-solved-b37b1d3a3b52)
 
 ## License
 
