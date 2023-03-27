@@ -148,7 +148,7 @@ cc_library(
 )
 
 cc_library(
-    name = "mkl_dnn",
+    name = "onednn",
     srcs = glob(
         [
             "src/common/*.cpp",
