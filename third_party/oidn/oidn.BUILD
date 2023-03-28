@@ -136,7 +136,7 @@ cc_library(
     deps = [
         "@oneTBB//:tbb",
     ] + select({
-        "@platforms//os:osx": [],
+        "@platforms//os:osx": ["@onednn//:onednn"],
         "//conditions:default": ["@onednn//:onednn"],
     }),
 )
