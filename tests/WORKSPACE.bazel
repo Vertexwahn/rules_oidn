@@ -10,6 +10,11 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 # rules_oidn
 #-------------------------------------------------------------------------------------
 
+#local_repository(
+#    name = "rules_ispc",
+#    path = "../../rules_ispc",
+#)
+
 local_repository(
     name = "rules_oidn",
     path = "..",

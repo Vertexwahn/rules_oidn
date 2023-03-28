@@ -23,7 +23,6 @@ expand_template(
     template = "include/OpenImageDenoise/config.h.in",
 )
 
-'''
 COMMON_DEFINES = select({
     "@platforms//os:osx": [
         "OIDN_BNNS",
@@ -38,14 +37,6 @@ COMMON_DEFINES = select({
         "OIDN_FILTER_RTLIGHTMAP",
     ],
 })
-'''
-
-COMMON_DEFINES = [
-    "OIDN_DNNL",  # change this to OIDN_BNNS for macOS
-    "OIDN_STATIC_LIB",
-    "OIDN_FILTER_RT",
-    "OIDN_FILTER_RTLIGHTMAP",
-]
 
 ispc_cc_library(
     name = "input_reorder_ispc",
