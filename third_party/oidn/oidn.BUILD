@@ -131,6 +131,7 @@ cc_library(
         "include/OpenImageDenoise/oidn.h",
         "include/OpenImageDenoise/oidn.hpp",
     ],
+    defines = COMMON_DEFINES,
     includes = ["include/OpenImageDenoise"],
     deps = [
         "@oneTBB//:tbb",
