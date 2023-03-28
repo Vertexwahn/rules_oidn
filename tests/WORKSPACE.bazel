@@ -42,7 +42,7 @@ register_ispc_toolchains()
 
 git_repository(
     name = "com_openexr",
-    commit = "f29c01b8a009e6de483f9f1111ebefd840b24eae",
+    commit = "fc3ba3cf02ea9322674dc91e5594675241a23a44",
     remote = "https://github.com/AcademySoftwareFoundation/openexr/",
 )
 
