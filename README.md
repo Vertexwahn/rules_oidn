@@ -17,8 +17,7 @@ More comparison images can be found [here](docs/denoised.pdf).
 
 ## Current status
 
-Currently, these rules compile on Ubuntu 22.04 (other Linux distributions should also work), Windows and macOS with arm64 (e.g. M1 processor).
-Building on macOS Intel does currently not work.
+Currently, these rules compile on Ubuntu 22.04 (other Linux distributions should also work), Windows and macOS (Intel and arm64).
 
 The goal of `rules_oidn` is not to reproduce a 1:1 binary compatible library that is equal to a CMake build.
 The focus is on the compilation of a working library that can be used in Bazel projects and is close to the CMake build.
