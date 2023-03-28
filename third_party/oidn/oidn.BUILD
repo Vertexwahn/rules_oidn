@@ -24,7 +24,7 @@ expand_template(
 )
 
 COMMON_DEFINES = select({
-    "@platforms//os:osx": [
+    "@rules_oidn//:osx_arm64": [
         "OIDN_BNNS",
         "OIDN_STATIC_LIB",
         "OIDN_FILTER_RT",
@@ -136,7 +136,7 @@ cc_library(
     deps = [
         "@oneTBB//:tbb",
     ] + select({
-        "@platforms//os:osx": [],
+        "@rules_oidn//:osx_arm64": [],
         "//conditions:default": ["@onednn//:onednn"],
     }),
 )
@@ -223,7 +223,7 @@ cc_library(
         "include",
     ],
     linkopts = select({
-        "@platforms//os:osx": ["-framework Accelerate"],
+        "@rules_oidn//:osx_arm64": ["-framework Accelerate"],
         "//conditions:default": [],
     }),
     visibility = ["//visibility:public"],
