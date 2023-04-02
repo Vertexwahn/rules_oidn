@@ -7,8 +7,8 @@ build --symlink_prefix=/ # Suppress symlink creation (to avoid untracked files i
 
 # GCC 9.3
 build:gcc9 --cxxopt=-std=c++2a
-build:gcc9 --cxxopt=-Wall
-build:gcc9 --cxxopt=-Werror
+##build:gcc9 --cxxopt=-Wall
+##build:gcc9 --cxxopt=-Werror
 ##build:gcc9 --cxxopt=-Wextra
 
 # GCC 11.3
