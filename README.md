@@ -6,7 +6,7 @@ Rules for using [Intel Open Image Denoise](https://www.openimagedenoise.org/) in
 
 ## What it does?
 
-Open Image Denoise can be use to denoise your images.
+Open Image Denoise can be used to denoise your images.
 Given a noisy input image Open Image Denoise can produce a denoised output image:
 
 ![Denoised](docs/oidn.png)
@@ -23,12 +23,12 @@ The goal of `rules_oidn` is not to reproduce a 1:1 binary compatible library tha
 The focus is on the compilation of a working library that can be used in Bazel projects and is close to the CMake build.
 The following table compares the precompiled version of OIDN to this Bazel build:
 
-| Dependency                            | Bazel                                     | [Precompiled Open Image Denoise v1.4.3](https://github.com/OpenImageDenoise/oidn/releases/tag/v1.4.3) |
-|---------------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| oneDNN                                | 2.7.3                                     | 2.2.4                                                                                                 |
-| Intel® Implicit SPMD Program Compiler | v1.19.0                                   | ?                                                                                                     |
-| ComputeLibrary                        | 22.11                                     | ?                                                                                                     |
-| oneTBB                                | e1f0f36054d2b6e78132b0f5bcecefb11a67d660  | oneTBB 2021.5.0                                                                                       |
+| Dependency                            | Bazel                                    | [Precompiled Open Image Denoise v1.4.3](https://github.com/OpenImageDenoise/oidn/releases/tag/v1.4.3) |
+|---------------------------------------|------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| oneDNN                                | 2.7.3                                    | 2.2.4                                                                                                 |
+| Intel® Implicit SPMD Program Compiler | v1.19.0                                  | ?                                                                                                     |
+| ComputeLibrary                        | 22.11                                    | ?                                                                                                     |
+| oneTBB                                | 5b2a49008c32c7ba3df7c9e137a894ff53710b64 | oneTBB 2021.5.0                                                                                       |
 
 ## Quick start
 
@@ -92,7 +92,7 @@ And a normal image:
 
 Currently, only the noisy rendering serves as an input for the example. 
 The albedo and normal images are not used.
-But you can easily modify the example code to use them.
+But the example code can be easily modified to use them.
 
 ## Generating weights manually
 
