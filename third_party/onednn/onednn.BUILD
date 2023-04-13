@@ -105,7 +105,7 @@ _COPTS_LIST = select({
     "-UUSE_MKL",
     "-UUSE_CBLAS",
     "-DDNNL_ENABLE_MAX_CPU_ISA",
-] # + tf_openmp_copts()
+]  # + tf_openmp_copts()
 
 _INCLUDES_LIST = [
     "include",
@@ -174,7 +174,7 @@ cc_library(
     }),
     textual_hdrs = _TEXTUAL_HDRS_LIST,
     visibility = ["//visibility:public"],
-    deps = [":onednn_autogen"]
+    deps = [":onednn_autogen"],
     #+ if_mkl_ml(
     #    ["@org_tensorflow//third_party/mkl:intel_binary_blob"],
     #    [],

@@ -137,7 +137,7 @@ cc_library(
         "@oneTBB//:tbb",
     ] + select({
         "@rules_oidn//:osx_arm64": [],
-        "//conditions:default": ["@onednn//:onednn"],
+        "//conditions:default": ["@onednn"],
     }),
 )
 
