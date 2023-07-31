@@ -42,7 +42,7 @@ register_ispc_toolchains()
 
 git_repository(
     name = "com_openexr",
-    commit = "fc3ba3cf02ea9322674dc91e5594675241a23a44",
+    commit = "af87558c603b41d0ce6a233f9c845c99924b9168",
     remote = "https://github.com/AcademySoftwareFoundation/openexr/",
 )
 
@@ -58,9 +58,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "com_github_nelhage_rules_boost",
-    sha256 = "bf488e4c472832a303d31ed20ea0ffdd8fa974654969b0c129b7c0ce4273f103",
-    strip_prefix = "rules_boost-5729d34dcf595874f32b9f1aa1134db65fe78fda",
-    url = "https://github.com/nelhage/rules_boost/archive/5729d34dcf595874f32b9f1aa1134db65fe78fda.tar.gz",
+    sha256 = "ef70e7f187a148441067cbd02e8198d959897b615c0edbbf288efe7369505c35",
+    strip_prefix = "rules_boost-fbfb6c665cfe223e9da343779c9da1a48e79e8c3",
+    url = "https://github.com/nelhage/rules_boost/archive/fbfb6c665cfe223e9da343779c9da1a48e79e8c3.tar.gz",
 )
 
 load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")

@@ -15,10 +15,10 @@ def oidn_deps():
     maybe(
         http_archive,
         name = "bazel_skylib",
-        sha256 = "b8a1527901774180afc798aeb28c4634bdccf19c4d98e7bdd1ce79d1fe9aaad7",
+        sha256 = "66ffd9315665bfaafc96b52278f57c7e2dd09f5ede279ea6d39b2be471e7e3aa",
         urls = [
-            "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.4.1/bazel-skylib-1.4.1.tar.gz",
-            "https://github.com/bazelbuild/bazel-skylib/releases/download/1.4.1/bazel-skylib-1.4.1.tar.gz",
+            "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.4.2/bazel-skylib-1.4.2.tar.gz",
+            "https://github.com/bazelbuild/bazel-skylib/releases/download/1.4.2/bazel-skylib-1.4.2.tar.gz",
         ],
     )
 
@@ -73,10 +73,10 @@ def oidn_deps():
         http_archive,
         name = "oneTBB",
         urls = [
-            "https://github.com/oneapi-src/oneTBB/archive/5b2a49008c32c7ba3df7c9e137a894ff53710b64.zip",
+            "https://github.com/oneapi-src/oneTBB/archive/539cbb3e67f8cde4b54c767626e015997755770b.zip",
         ],
-        strip_prefix = "oneTBB-5b2a49008c32c7ba3df7c9e137a894ff53710b64",
-        sha256 = "d9ae2b326b6bac49c5a97ddfd7068a024fc7955f64b1e0811300aca6cff30c94",
+        strip_prefix = "oneTBB-539cbb3e67f8cde4b54c767626e015997755770b",
+        #sha256 = "d9ae2b326b6bac49c5a97ddfd7068a024fc7955f64b1e0811300aca6cff30c94",
     )
 
     maybe(
@@ -104,7 +104,7 @@ def oidn_deps():
     maybe(
         http_archive,
         name = "rules_ispc",
-        sha256 = "2c5563f878e63eaaf498293ca084c84d3e6cb2e6818bf0d4b24b5dfc63570892",
-        strip_prefix = "rules_ispc-0.0.2",
-        url = "https://github.com/Vertexwahn/rules_ispc/releases/download/v0.0.2/rules_ispc-v0.0.2.tar.gz",
+        sha256 = "3a90eac643926017defa5e95a7addfd77e278787f244b0722019766727141ad2",
+        strip_prefix = "rules_ispc-0.0.3",
+        url = "https://github.com/Vertexwahn/rules_ispc/releases/download/v0.0.3/rules_ispc-v0.0.3.tar.gz",
     )
