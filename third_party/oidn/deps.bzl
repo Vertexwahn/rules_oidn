@@ -76,7 +76,7 @@ def oidn_deps():
             "https://github.com/oneapi-src/oneTBB/archive/539cbb3e67f8cde4b54c767626e015997755770b.zip",
         ],
         strip_prefix = "oneTBB-539cbb3e67f8cde4b54c767626e015997755770b",
-        #sha256 = "d9ae2b326b6bac49c5a97ddfd7068a024fc7955f64b1e0811300aca6cff30c94",
+        sha256 = "6c0d46f8ff445f46e8cd404f0a8b5d6916210c145b76a6eddd0ce20007acc0c3",
     )
 
     maybe(
