@@ -1,6 +1,6 @@
 # Test data
 
-## Cornel box scene
+## Cornell box scene
 
 ### Box filter
 
